@@ -8,15 +8,16 @@ import Form from './form';
 import { createMedic } from '../services';
 import Loading from '../../component/loading';
 import { getMedics } from "../services";
+import swal from 'sweetalert2'
 
 const MedicoLayout = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isLoading, setIsLoading] = useState(true);
     const [medics, setMedics] = useState([]);
 
+
     async function loadMedics () {
         const response = await getMedics();
-
         if (response.status === 200) {
             setMedics(response.data.medicolab)
         }
@@ -29,9 +30,18 @@ const MedicoLayout = () => {
     },[])
 
     const handleSubmit = async (data) => {
-        await createMedic(data)
+        const response = await createMedic(data)
+        if (response.status === 201) {
+            swal.fire({
+                icon: 'success',
+                title: 'Registrado',
+                text: 'Médico '+ data.nombre +' a sido registrado con exito',
+                confirmButtonText: 'Aceptar'
+                });
+        }
         loadMedics()
         setIsModalOpen(false)
+        
     }
     return (
         <>
