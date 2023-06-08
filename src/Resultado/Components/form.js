@@ -25,17 +25,17 @@ const Form = ({ handleSubmit }) => {
     return (
         <form onSubmit={_handleSubmit}>
         <Field>
-            <Label>Resultado</Label>
+            <Label>Rut Paciente</Label>
             <Control>
                 <Input
-                 class="textarea"
-                 placeholder="Describir resultado"
-                 name="result"
-                 value={formValues.result}
+                 placeholder="11111111-5"
+                 name="rutPatient"
+                 value={formValues.rutPatient}
                  onChange={handleChange}
                 />
             </Control>
-        </Field>
+        </Field>.-
+
         <Field>
             <Label>Tipo de muestra</Label>
             <Control>
@@ -59,17 +59,7 @@ const Form = ({ handleSubmit }) => {
                 />
             </Control>
         </Field>
-        <Field>
-            <Label>Rut Paciente</Label>
-            <Control>
-                <Input
-                 placeholder="11111111-5"
-                 name="rutPatient"
-                 value={formValues.rutPatient}
-                 onChange={handleChange}
-                />
-            </Control>
-        </Field>
+        
         <Field>
             <Label>Estado</Label>
             <Control>
@@ -77,6 +67,18 @@ const Form = ({ handleSubmit }) => {
                  placeholder="Ej: Realizado"
                  name="status"
                  value={formValues.status}
+                 onChange={handleChange}
+                />
+            </Control>
+        </Field>
+        <Field>
+            <Label>Resultado</Label>
+            <Control>
+                <Input
+                 class="textarea"
+                 placeholder="Describir resultado"
+                 name="result"
+                 value={formValues.result}
                  onChange={handleChange}
                 />
             </Control>

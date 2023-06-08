@@ -19,18 +19,17 @@ function App() {
     <Router>
             <Routes>
               <Route element={< PrivateRoutes />}>
-              
-              </Route>
-              
               <Route exact path='/' element={<HomePage/>} />
-              <Route exact path='/login' element={< LoginPage />}/>
               <Route exact path='/perfil' element={<ProfilePage/>} />
               <Route exact path='/medico' element={<MedicoLayout/>} />
               <Route exact path='/muestra' element={<SamplePage/>} />
               <Route exact path='/paciente' element={<PacienteLayout/>} />
-              <Route exact path='/reset-password' element={<ResetPassword/>} />
-              <Route exact path='/resultado' element={<ResultLayout/>} />
+              <Route exact path='/resultado' element={<ResultLayout/>} />              
+              </Route>
+              
               <Route exact path='/*' element={<PageError/>} />
+              <Route exact path='/login' element={< LoginPage />}/>
+              <Route exact path='/reset-password' element={<ResetPassword/>} />
 
             </Routes>
     </Router>

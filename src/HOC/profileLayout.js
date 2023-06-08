@@ -10,11 +10,15 @@ const userProfileLayout = (ChildComponent) => {
     
             this.state = {    
                 auser: " ",
-                rol: " "
+                rol: " ",
+                rut:" ",
+                correo:"",
             }
 
             this.state.auser = localStorage.getItem('usuario');
             this.state.rol = localStorage.getItem('cargo');
+            this.state.rut = localStorage.getItem('rut');
+            this.state.correo = localStorage.getItem('correo');
         }
     
         render(){
@@ -44,8 +48,8 @@ const userProfileLayout = (ChildComponent) => {
                                     <div>
                                         <div className="bd-example">
                                             <div className="list-group">
-                                                <label  className="form-label">Nombre:</label>
-                                                <label  className="form-label">Rut:</label>
+                                                <label  className="form-label">Nombre: { this.state.auser}</label>
+                                                <label  className="form-label">Rut: { this.state.rut}</label>
                                                 <NavLink to="/change-password" className={({ isActive }) => `list-group-item list-group-item-action ${isActive ? 'active': ''}`}>Cambiar Clave</NavLink>
                                             </div>
                                         </div>

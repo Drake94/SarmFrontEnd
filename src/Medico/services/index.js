@@ -31,7 +31,32 @@ export async function createMedic (medicData) {
             data: formData,
         })
         return response
+        
     } catch(e) {
         console.log(e)
+    }
+}
+
+export async function loginMedic (medicData) {
+    try {
+        const data = new URLSearchParams()
+        data.append('correo', medicData.correo)
+        data.append('clave', medicData.clave)
+        
+        const response = await axios({
+            url: `${baseUrl}/medicoLabLogIn`,
+            method: 'POST',
+            headers: { 'content-type': 'application/x-www-form-urlencoded' },
+            data: data,           
+        })
+        if (response.status === 200)
+            document.cookie = `token = ${response.data.token}`
+
+            return response;
+            
+
+    } catch(err) {
+        console.log(err)
+        
     }
 }

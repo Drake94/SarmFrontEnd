@@ -7,7 +7,7 @@ const TableSamples = ({ samples }) =>{
 
 
     return(
-        <Box>
+        <Box className="boxTable">
             <Table class="table">
                 <thead>
                     <tr>

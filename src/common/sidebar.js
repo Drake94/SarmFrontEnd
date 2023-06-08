@@ -5,7 +5,6 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 import { Link } from 'react-router-dom';
 import { FaHome, FaUserCheck, FaFileMedical, FaSyringe, FaUserInjured } from "react-icons/fa"
 
-const perfil = "usuario"
 class Sidebar extends React.Component {
     constructor(props){
         
@@ -13,20 +12,34 @@ class Sidebar extends React.Component {
         
 
         this.state = {
-            
+            user: " ",
+            rol: " ",
+            rut:" ",
+            correo:"",
         }
+        this.state.user = localStorage.getItem('usuario');
+        this.state.rol = localStorage.getItem('cargo');
+        this.state.rut = localStorage.getItem('rut');
+        this.state.correo = localStorage.getItem('correo');
         
     } 
 
     
     render(){
+        const LogOut =()=>{
+            localStorage.removeItem('correo');
+            localStorage.removeItem('usuario');
+            localStorage.removeItem('cargo');
+            localStorage.removeItem('rut');
+            localStorage.clear();
+        }
         return <div className="border-end sidenav" id="sidebar-wrapper">
             <div className="sidebar-heading border-bottom ">
                 <Link to="/">
                     <img class="imgprofile" alt="Alt content"  src={require('../assets/images/favicon.png')} />
                 </Link>
                 <br />
-                <div><Link to="/perfil" className="Sidebartittle">Hola, { perfil }</Link></div>
+                <div><Link to="/perfil" className="Sidebartittle">Hola, { this.state.user }</Link></div>
                 <p> </p><br />
             </div>
             <PerfectScrollbar className="sidebar-items">
@@ -66,7 +79,7 @@ class Sidebar extends React.Component {
                         <img alt="Alt content" src={require('../assets/images/favicon.png')} width="32" height="32" className="rounded-circle me-2" />
                     </div>   
                     <div className="col sidebar-container-text">
-                        <Link className="dropdown-item" to="/login" ><i className="fa " aria-hidden="true"></i> Cerrar sesión</Link>
+                        <Link className="dropdown-item" to="/login" onClick={ LogOut } ><i className="fa " aria-hidden="true"></i> Cerrar sesión</Link>
                     </div>  
                 </div>      
             </div>

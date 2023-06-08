@@ -25,7 +25,10 @@ export async function createMuestra (pacientData) {
         const response = await axios({
             url: `${baseUrl}/muestra`,
             method: 'POST',
-            headers: { 'content-type': 'application/x-www-form-urlencoded' },
+            headers: { 
+                'content-type': 'application/x-www-form-urlencoded',
+                'x-access-token': document.cookie
+         },
             data: data,
         })
         return response

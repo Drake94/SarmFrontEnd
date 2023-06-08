@@ -10,9 +10,9 @@ const TableHomeSamples = ({ samples }) =>{
             <Table class="table">
                 <thead>
                     <tr>
-                        <th><abbr title="Rut Paciente">Rut del paciente</abbr></th>
-                        <th><abbr title="Fecha muestra">Fecha muestra</abbr></th>
-                        <th><abbr title="Fecha muestra">Estado</abbr></th>
+                        <th><abbr >Rut del paciente</abbr></th>
+                        <th><abbr >Fecha muestra</abbr></th>
+                        <th><abbr >Estado</abbr></th>
                     </tr>
                 </thead>
                 <tbody className="tbody-1">

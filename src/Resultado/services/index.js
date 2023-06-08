@@ -26,8 +26,24 @@ export async function createResult (pacientData) {
         const response = await axios({
             url: `${baseUrl}/resultado`,
             method: 'POST',
-            headers: { 'content-type': 'application/x-www-form-urlencoded' },
+            headers: { 
+                'content-type': 'application/x-www-form-urlencoded',
+                'x-access-token': document.cookie
+         },
             data: data,
+        })
+        return response
+    } catch(e) {
+        console.log(e)
+    }
+}
+
+export async function deleteResult (data) {
+    try {
+        const response = await axios({
+            url: `${baseUrl}/resultado/`+data,
+            headers: {'x-access-token': document.cookie},
+            method: 'DELETE'
         })
         return response
     } catch(e) {

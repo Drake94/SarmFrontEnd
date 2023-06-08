@@ -2,7 +2,7 @@ import React from 'react';
 import {Outlet, Navigate, } from "react-router-dom";
 
 const PrivateRoute = () => {
-    var user = localStorage.getItem('usuario');
+    var user = localStorage.getItem('correo');
     //console.log(user)
     if(user === null) {
 
