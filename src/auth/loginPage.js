@@ -27,7 +27,7 @@ const LoginPage = () => {
         if (!logInUser) {
             console.log(e)
             swal.fire({
-                icon: 'info',
+                icon: 'warning',
                 title: 'Error 400',
                 text: 'Usuario o clave incorrecto ',
                 confirmButtonText: 'Aceptar'

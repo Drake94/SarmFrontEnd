@@ -34,7 +34,7 @@ const Form = ({ handleSubmit }) => {
                  onChange={handleChange}
                 />
             </Control>
-        </Field>.-
+        </Field>
 
         <Field>
             <Label>Tipo de muestra</Label>

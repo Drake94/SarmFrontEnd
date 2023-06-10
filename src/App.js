@@ -21,10 +21,10 @@ function App() {
               <Route element={< PrivateRoutes />}>
               <Route exact path='/' element={<HomePage/>} />
               <Route exact path='/perfil' element={<ProfilePage/>} />
-              <Route exact path='/medico' element={<MedicoLayout/>} />
-              <Route exact path='/muestra' element={<SamplePage/>} />
-              <Route exact path='/paciente' element={<PacienteLayout/>} />
-              <Route exact path='/resultado' element={<ResultLayout/>} />              
+              <Route exact path='/medicos' element={<MedicoLayout/>} />
+              <Route exact path='/muestras' element={<SamplePage/>} />
+              <Route exact path='/pacientes' element={<PacienteLayout/>} />
+              <Route exact path='/resultados' element={<ResultLayout/>} />              
               </Route>
               
               <Route exact path='/*' element={<PageError/>} />

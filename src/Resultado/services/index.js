@@ -1,5 +1,6 @@
 import axios from 'axios';
 const baseUrl = process.env.REACT_APP_BASE_URL
+const token = document.cookie.replace('token=', '')
 
 export async function getResult () {
     try {
@@ -28,8 +29,8 @@ export async function createResult (pacientData) {
             method: 'POST',
             headers: { 
                 'content-type': 'application/x-www-form-urlencoded',
-                'x-access-token': document.cookie
-         },
+                'x-access-token': token
+            },
             data: data,
         })
         return response
@@ -42,7 +43,10 @@ export async function deleteResult (data) {
     try {
         const response = await axios({
             url: `${baseUrl}/resultado/`+data,
-            headers: {'x-access-token': document.cookie},
+            headers: { 
+                'content-type': 'application/x-www-form-urlencoded',
+                'x-access-token': token
+            },
             method: 'DELETE'
         })
         return response

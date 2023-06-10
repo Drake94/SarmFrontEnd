@@ -50,17 +50,17 @@ class Sidebar extends React.Component {
                         </Link>
                     </li> 
                         <li className="mb-1">
-                        <Link tag="a" className="sidebartext" to="/paciente">
+                        <Link tag="a" className="sidebartext" to="/pacientes">
                         <FaUserInjured />    Pacientes
                         </Link>
                     </li>                    
                     <li className="mb-1">
-                        <Link tag="a" className="sidebartext" to="/muestra">
+                        <Link tag="a" className="sidebartext" to="/muestras">
                         <FaSyringe /> Muestra
                         </Link>
                     </li>
                     <li className="mb-1">
-                        <Link tag="a" className="sidebartext" to="/resultado">
+                        <Link tag="a" className="sidebartext" to="/resultados">
                         <FaFileMedical /> Resultado
                         </Link>
                     </li>

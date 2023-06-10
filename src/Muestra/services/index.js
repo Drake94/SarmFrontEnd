@@ -1,5 +1,6 @@
 import axios from 'axios';
 const baseUrl = process.env.REACT_APP_BASE_URL
+const token = document.cookie.replace('token=', '')
 
 export async function getMuestra () {
     try {
@@ -27,8 +28,8 @@ export async function createMuestra (pacientData) {
             method: 'POST',
             headers: { 
                 'content-type': 'application/x-www-form-urlencoded',
-                'x-access-token': document.cookie
-         },
+                'x-access-token': token
+            },
             data: data,
         })
         return response

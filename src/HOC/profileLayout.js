@@ -59,7 +59,7 @@ const userProfileLayout = (ChildComponent) => {
                             <div className="col-md-9">
                                 <br />
                                 <label  className="form-label layouttext">Medicos registrados</label>
-                                <Link to='/medico' type="submit" name="submit" className="btn btn-primary btn-lg btn-default2" value="Acceder">Ver </Link>
+                                <Link to='/medicos' type="submit" name="submit" className="btn btn-primary btn-lg btn-default2" value="Acceder">Ver </Link>
                             </div>
                         </div>
                         <div className="col-md-9">

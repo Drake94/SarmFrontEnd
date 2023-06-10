@@ -50,9 +50,13 @@ export async function loginMedic (medicData) {
             data: data,           
         })
         if (response.status === 200)
-            document.cookie = `token = ${response.data.token}`
+            document.cookie = `token = ${response.data.token};`
 
-            return response;
+         
+        console.log(document.cookie)
+        const token = document.cookie.replace('token=', '')
+        console.log(token)
+        return response;
             
 
     } catch(err) {
