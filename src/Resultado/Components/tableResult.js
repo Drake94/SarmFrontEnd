@@ -13,7 +13,7 @@ const TableResult = ({ results }) =>{
         await deleteResult(_id)
     }
 
-    const _handleSubmit = async (data) => {
+    const _handleSubmit = async () => {
     
         //await createResult(data)
         setIsModalOpen(false)
@@ -28,7 +28,7 @@ const TableResult = ({ results }) =>{
                     <tr>
                         <th><abbr title="Describa el resultado">Resultado</abbr></th>
                         <th><abbr title="Tipo de muestra">Tipo de muestra</abbr></th>
-                        <th><abbr title="Descripción">Validación</abbr></th>
+                        <th><abbr title="Descripción">Validado por:</abbr></th>
                         <th><abbr title="Rut Paciente">Rut del paciente</abbr></th>
                         <th><abbr title="Fecha última actualización ">Fecha Revisión</abbr></th>
                         <th><abbr title="Estado">Estado</abbr></th>

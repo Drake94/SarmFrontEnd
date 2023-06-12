@@ -10,14 +10,14 @@ const TableHomeResult = ({ results }) =>{
             <Table class="table">
                 <thead>
                     <tr>
-                        <th><abbr >Validación</abbr></th>
+                        <th><abbr >Validado por:</abbr></th>
                         <th><abbr >Rut del paciente</abbr></th>
                         <th><abbr >Fecha Revisión</abbr></th>
                         <th><abbr >Estado</abbr></th>
                     </tr>
                 </thead>
                 <tbody className="tbody-1">
-                    {results.map(({result, sampleType, validation, rutPatient, createdAt, status}) => (
+                    {results.map(({validation, rutPatient, createdAt, status}) => (
                             <tr className="tr-1">
                                 <td>{validation}</td>
                                 <td>{rutPatient}</td>

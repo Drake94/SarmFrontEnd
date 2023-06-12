@@ -2,10 +2,10 @@ import React from "react";
 import Header from '../common/header';
 import Sidebar from '../common/sidebar';
 import "../assets/css/profile.css";
-import { Preloader, Bars } from 'react-preloader-icon';
+
+import Loading from '../component/loading';
 
 import 'bootstrap/dist/css/bootstrap.css';
-
 const adminLayout = (ChildComponent) => {
     class AdminLayout extends React.Component {
         constructor(props){
@@ -24,12 +24,12 @@ const adminLayout = (ChildComponent) => {
                 }))
             }, 1000);
         }
-
+        
         renderHtml(){
             if(!this.state.pageLoaded){
                 return <div className="loading-page">
                     <div className="center">
-                        <Preloader use={Bars} size={60} strokeWidth={10} strokeColor="#01AFEF" duration={600} />
+                        <Loading />
                     </div>
               </div>
             }

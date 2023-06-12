@@ -21,9 +21,9 @@ class PageError extends React.Component {
             </div>    
             <div className="Error-container2" >
                 <h3 className="tittleSError"> Error 404<br></br> <br></br><br></br></h3>
-                <h3 className="tittleSError"> Pagina no encontrada <br></br><br></br><br></br></h3>
+                <h3 className="tittleSError"> Página no encontrada <br></br><br></br><br></br></h3>
                 <h2 className="tittleSError"> Disculpe las molestias <br></br><br></br><br></br></h2>
-            <NavLink to="/login" className="tittleSErrorBack"> Volver al Inicio  </NavLink>
+            <NavLink to="/" className="tittleSErrorBack"> Volver al Inicio  </NavLink>
             </div>
         </div>
         </>

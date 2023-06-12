@@ -20,7 +20,6 @@ const SampleLayout = () => {
         if (response.status === 200) {
             setSamples(response.data.muestra)
         }
-        
         setIsLoading(false)
     }
     

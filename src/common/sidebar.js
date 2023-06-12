@@ -16,12 +16,13 @@ class Sidebar extends React.Component {
             rol: " ",
             rut:" ",
             correo:"",
+            imgUrl:"",
         }
         this.state.user = localStorage.getItem('usuario');
         this.state.rol = localStorage.getItem('cargo');
         this.state.rut = localStorage.getItem('rut');
         this.state.correo = localStorage.getItem('correo');
-        
+        this.state.imgUrl = localStorage.getItem('imgUrl');
     } 
 
     
@@ -31,12 +32,14 @@ class Sidebar extends React.Component {
             localStorage.removeItem('usuario');
             localStorage.removeItem('cargo');
             localStorage.removeItem('rut');
+            localStorage.removeItem('image');
             localStorage.clear();
+            
         }
         return <div className="border-end sidenav" id="sidebar-wrapper">
             <div className="sidebar-heading border-bottom ">
                 <Link to="/">
-                    <img class="imgprofile" alt="Alt content"  src={require('../assets/images/favicon.png')} />
+                    <img class="imgprofile" alt="Alt content"  src={this.state.imgUrl} />
                 </Link>
                 <br />
                 <div><Link to="/perfil" className="Sidebartittle">Hola, { this.state.user }</Link></div>

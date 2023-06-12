@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom/dist";
 
 const LoginPage = () => {
     const navigate = useNavigate();
+    // eslint-disable-next-line no-unused-vars
     const [medic, setMedic] = useState([]);
     const[user, setUser] = useState({
         correo:'',
@@ -25,7 +26,6 @@ const LoginPage = () => {
         const sendData = user
         const logInUser = await loginMedic(sendData)
         if (!logInUser) {
-            console.log(e)
             swal.fire({
                 icon: 'warning',
                 title: 'Error 400',
@@ -39,6 +39,7 @@ const LoginPage = () => {
             window.localStorage.setItem('usuario', logInUser.data.userFound.nombre);
             window.localStorage.setItem('cargo', logInUser.data.userFound.cargo);
             window.localStorage.setItem('rut', logInUser.data.userFound.rut);
+            window.localStorage.setItem('imgUrl', logInUser.data.userFound.imgUrl);
             navigate('/');
         }
         

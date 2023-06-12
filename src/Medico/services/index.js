@@ -55,7 +55,7 @@ export async function loginMedic (medicData) {
          
         console.log(document.cookie)
         const token = document.cookie.replace('token=', '')
-        console.log(token)
+        console.log(token.length)
         return response;
             
 
