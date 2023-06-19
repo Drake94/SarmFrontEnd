@@ -86,3 +86,11 @@ body {
   background-color: orange ;
   color: white;
 }
+.showPwDFormLogIn {
+  position: relative;
+    border-left: hidden;
+    right: 0px;
+    left: 88.7%;
+    top: -36px;
+    padding: 16px;
+}

@@ -18,6 +18,15 @@
   background-color: orange ;
   color: white;
 }
+
+.menu_icon{
+  display: flex;
+  position: absolute;
+  left: 84%;
+  align-items: flex-end;
+  border: 5px !important;
+  justify-content: flex-end;
+}
 /* Profile container */
 .profile {
   margin: 20px 0;
@@ -48,7 +57,7 @@
 
 .profile-usertitle-job {
   text-transform: uppercase;
-  color: #0ab5d2;
+  color: blue;
   font-size: 15px;
   font-weight: 600;
   margin-bottom: 15px;
@@ -150,7 +159,7 @@ display: block;
 
 .profile .list-group-item {
 border: transparent !important;
-color: orange;
+color: purple;
 font-family: var(--default-font-semibold);
 font-weight: normal;
 }
@@ -174,10 +183,7 @@ font-family: 'poppins-regular';
 text-decoration: none;
 background-color: transparent !important;
 }
-.imgprofile {
-  border-radius: 100px;
-  width: 100px;
-}
+
 
 .margin-top-20 {
     margin-top: 20px!important;
@@ -238,16 +244,12 @@ background-color: transparent !important;
 
 .imgprofile {
   border-radius: 100px;
-  width: 100px;
+  width: 10vw;
 
 }.colorText  
 { color: white; 
 }
 
-.imgprofile {
-  border-radius: 100px;
-  width: 100px;
-}
 
 .loading-page_2 {
   width: 100%;
@@ -277,6 +279,8 @@ background-color: transparent !important;
   font-family: serif;
   /*height: 200px;*/
 }
+
+
 
 .Sidebartittle {
   font-size: 25px !important;

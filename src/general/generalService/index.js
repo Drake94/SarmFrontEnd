@@ -1,10 +1,11 @@
 import axios from 'axios';
 const baseUrl = process.env.REACT_APP_BASE_URL
+const token = document.cookie.replace('token=', '')
 
-export async function getResult () {
+export async function getSampleType () {
     try {
         const response = await axios({
-            url: `${baseUrl}/resultado`,
+            url: `${baseUrl}/tipomuestra`,
             method: 'GET'
         })
         return response
@@ -13,18 +14,14 @@ export async function getResult () {
     }
 }
 
-export async function createResult (pacientData) {
+export async function createSampleType (sampleTypeData) {
     try {
         const data = new URLSearchParams()
-        const token = document.cookie.replace('token=', '')
-        data.append('result', pacientData.result)
-        data.append('sampleType', pacientData.sampleType)
-        data.append('validation', pacientData.validation)
-        data.append('rutPatient', pacientData.rutPatient)
-        data.append('status', pacientData.status)
-        
+
+        data.append('name', sampleTypeData.name)
+
         const response = await axios({
-            url: `${baseUrl}/resultado`,
+            url: `${baseUrl}/tipomuestra`,
             method: 'POST',
             headers: { 
                 'content-type': 'application/x-www-form-urlencoded',
@@ -35,20 +32,35 @@ export async function createResult (pacientData) {
         return response
     } catch(e) {
         console.log(e)
-        return e
     }
 }
 
-export async function deleteResult (data) {
-    const token = document.cookie.replace('token=', '')
+export async function getStatus () {
     try {
         const response = await axios({
-            url: `${baseUrl}/resultado/`+data,
+            url: `${baseUrl}/status`,
+            method: 'GET'
+        })
+        return response
+    } catch(e) {
+        console.log(e)
+    }
+}
+
+export async function createStatus (status) {
+    try {
+        const data = new URLSearchParams()
+
+        data.append('name', status.name)
+
+        const response = await axios({
+            url: `${baseUrl}/status`,
+            method: 'POST',
             headers: { 
                 'content-type': 'application/x-www-form-urlencoded',
                 'x-access-token': token
             },
-            method: 'DELETE'
+            data: data,
         })
         return response
     } catch(e) {

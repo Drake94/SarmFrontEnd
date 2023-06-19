@@ -20,7 +20,7 @@ class ResetPassword extends React.Component {
                   <p>Puedes recuperarla aqui.</p>
                   <div className="panel-body">
     
-                    <form id= "register-form" autocomplete="off" className="form" method="post">
+                    <form id= "register-form" autoComplete="off" className="form" method="post">
     
                       <div className="form-group">
                         <span className="input-group-addon"><i className="glyphicon glyphicon-envelope color-blue"></i></span>

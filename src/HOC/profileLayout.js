@@ -2,6 +2,7 @@ import React from "react";
 import adminLayout from "./adminLayout"
 import "../assets/css/profile.css"
 import { NavLink, Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const userProfileLayout = (ChildComponent) => {
     class UserProfilePageHoc extends React.Component {
@@ -20,8 +21,18 @@ const userProfileLayout = (ChildComponent) => {
             this.state.rut = localStorage.getItem('rut');
             this.state.correo = localStorage.getItem('correo');
         }
+
     
         render(){
+            const userDiferentAdmin = () =>{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Acceso no autorizado',
+                    text:  'Su cargo es '+ this.state.rol +', Acceso solo para administradores ',
+                    confirmButtonText: 'Aceptar'
+                })
+            }
+            
             return <>
                 <div className="container">
                     <div className="row profile">
@@ -59,7 +70,15 @@ const userProfileLayout = (ChildComponent) => {
                             <div className="col-md-9">
                                 <br />
                                 <label  className="form-label layouttext">Medicos registrados</label>
-                                <Link to='/medicos' type="submit" name="submit" className="btn btn-primary btn-lg btn-default2" value="Acceder">Ver </Link>
+                                { this.state.rol === "Administrador" ?
+                                    <Link to='/medicos' type="submit" name="submit" className="btn btn-primary btn-lg btn-default2" value="Acceder">
+                                    Ver 
+                                </Link> :
+                                    <Link to='' type="submit" onClick={userDiferentAdmin}  name="submit" className="btn btn-primary btn-lg btn-default2" value="Acceder">
+                                    Ver 
+                                    </Link>
+                                    }
+                                
                             </div>
                         </div>
                         <div className="col-md-9">

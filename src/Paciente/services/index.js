@@ -16,7 +16,7 @@ export async function getPacient () {
 export async function createPacient (pacientData) {
     try {
         const data = new URLSearchParams()
-
+        const token = document.cookie.replace('token=', '')
         data.append('nombrePaciente', pacientData.nombrePaciente)
         data.append('edad', pacientData.edad)
         data.append('rut', pacientData.rut)
@@ -24,11 +24,16 @@ export async function createPacient (pacientData) {
         const response = await axios({
             url: `${baseUrl}/paciente`,
             method: 'POST',
-            headers: { 'content-type': 'application/x-www-form-urlencoded' },
+            headers: { 
+                'content-type': 'application/x-www-form-urlencoded',
+                'x-access-token': token 
+            },
+
             data: data,
         })
         return response
     } catch(e) {
         console.log(e)
+        return e
     }
 }

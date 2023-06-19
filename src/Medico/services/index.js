@@ -22,6 +22,7 @@ export async function createMedic (medicData) {
         formData.append('cargo', medicData.cargo)
         formData.append('correo', medicData.correo)
         formData.append('clave', medicData.clave)
+        formData.append('confirmarClave', medicData.confirmarClave)
         formData.append('rut', medicData.rut)
         formData.append('image', medicData.image)
 
@@ -34,6 +35,7 @@ export async function createMedic (medicData) {
         
     } catch(e) {
         console.log(e)
+        return e
     }
 }
 
@@ -51,16 +53,13 @@ export async function loginMedic (medicData) {
         })
         if (response.status === 200)
             document.cookie = `token = ${response.data.token};`
-
-         
-        console.log(document.cookie)
+        // eslint-disable-next-line no-unused-vars
         const token = document.cookie.replace('token=', '')
-        console.log(token.length)
         return response;
             
 
-    } catch(err) {
-        console.log(err)
+    } catch(e) {
+        console.log(e)
         
     }
 }

@@ -2,8 +2,7 @@
 .sidenav {
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 400px; /* Set the width of the sidebar */
-  position: relative; /* Fixed Sidebar (stay in place on scroll) relative for static position*/
-  z-index: 1; /* Stay on top */
+  position: sticky; /* Fixed Sidebar (stay in place on scroll) 
   top: 0; /* Stay at the top */
   left: 0;
   background-color: #2e2e33; /* Black */
@@ -11,6 +10,33 @@
   overflow-x: hidden; /* Disable horizontal scroll */
   overflow-y: hidden;
 }
+
+.buttonCreate{
+  position: absolute !important;
+  z-index: 1;
+}
+
+.centerTable{
+  text-align-last: center !important;
+}
+
+.abbr{
+  font-family: fangsong !important;
+  font-size: 1.3rem !important;
+}
+
+.title{
+  color: black !important;
+  font-size: 3rem !important;
+  font-weight: 700 !important;
+  line-height: 1.125 !important;
+  font-family: fangsong !important;
+}
+
+.centerIcon{
+  text-align: center !important
+}
+
 .sidebartext{
   font-family: fangsong !important;
   color: white !important;
@@ -23,6 +49,12 @@
 }
 .sidebartext:focus{
   color: orange !important;
+}
+.sidebartextDisabled{
+  font-family: fangsong !important;
+  color: white !important;
+  font-size: 30px !important;
+  padding: 0.25rem 0.5rem;
 }
 .sidebar-items {
   height: calc(100% - 100px) !important;
@@ -405,4 +437,9 @@ table tbody tr:focus-within, table tbody tr:hover {
   margin-bottom: 0px !important;
   overflow-y: scroll;
   max-height: 60vh;
+}
+
+
+.delete {
+  display: none !important;
 }

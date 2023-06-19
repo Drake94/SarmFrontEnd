@@ -14,7 +14,6 @@ class PageError extends React.Component {
     
     render(){
         return(
-            <>
         <div className="Error-form">
             <div className="Error-container2" >
                 <img alt="hey" src={require('../assets/images/favicon.png')} className="img-fluid"/>
@@ -26,7 +25,6 @@ class PageError extends React.Component {
             <NavLink to="/" className="tittleSErrorBack"> Volver al Inicio  </NavLink>
             </div>
         </div>
-        </>
         )  
         
     }

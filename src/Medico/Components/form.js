@@ -1,6 +1,8 @@
 import React, {useState, useRef} from "react";
 import { Form as BulmaForm, Button } from 'react-bulma-components';
 import swal from 'sweetalert2'
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
+import '../../assets/css/forms.css'
 const { Field, Control, Label, Input } = BulmaForm
 
 const Form = ({ handleSubmit }) => {
@@ -9,8 +11,13 @@ const Form = ({ handleSubmit }) => {
         cargo:'',
         correo:'',
         clave:'',
+        confirmarClave:'',
         rut:'',
     })
+
+    const [showPWD, setShowPWD] = useState(false)
+    const [showPWD2, setShowPWD2] = useState(false)
+    
 
     const inputFileRef = useRef()
 
@@ -42,11 +49,25 @@ const Form = ({ handleSubmit }) => {
                 text: 'Correo no puede quedar vacío',
                 confirmButtonText: 'Aceptar'
                 });  
-        }else if(formValues.clave === ''){
+        }else if(formValues.clave === '' || formValues.confirmarClave === ''){
             swal.fire({
                 icon: 'info',
                 title: 'Campos requeridos',
                 text: 'Clave no puede quedar vacío',
+                confirmButtonText: 'Aceptar'
+                });  
+        }else if(formValues.clave.length <= 4 || formValues.confirmarClave.length <= 4  ){
+            swal.fire({
+                icon: 'info',
+                title: 'Demaciado corto',
+                text: 'Las claves deben tener más  de 4 caracteres',
+                confirmButtonText: 'Aceptar'
+                });  
+        }else if(formValues.clave.length >= 21 || formValues.confirmarClave.length >= 21 ){
+            swal.fire({
+                icon: 'info',
+                title: 'Demaciado largo',
+                text: 'Las claves deben tener menos de 20 caracteres',
                 confirmButtonText: 'Aceptar'
                 });  
         }else if(formValues.rut === ''){
@@ -102,22 +123,53 @@ const Form = ({ handleSubmit }) => {
                  name="correo"
                  type="email"
                  required='true'
-                 value={formValues.correo}
+                 value={formValues.correo.toLowerCase()}
                  onChange={handleChange}
                 />
             </Control>
         </Field>
         <Field>
             <Label>Clave</Label>
-            <Control>
-                <Input
+            <Control className="controlBox">
+                <Input 
+                 className="inputBox"
                  placeholder="Clave"
                  name="clave"
-                 type="password"
+                 type={showPWD ? "text" : "password"}
                  required='true'
                  value={formValues.clave}
                  onChange={handleChange}
                 />
+                {showPWD ? 
+                    // eslint-disable-next-line jsx-a11y/anchor-is-valid
+                    <a className="showPwDForm" onClick={() =>setShowPWD(!showPWD)}> <FaEyeSlash/></a> : 
+                    // eslint-disable-next-line jsx-a11y/anchor-is-valid
+                    <a className="showPwDForm" onClick={() =>setShowPWD(!showPWD)}> <FaEye/></a>
+                }
+                
+                
+            </Control>
+        </Field>
+        <Field>
+            <Label>Confirmar Clave</Label>
+            <Control className="controlBox">
+                <Input
+                 className="inputBox"
+                 placeholder="Confirmar Clave"
+                 name="confirmarClave"
+                 type={showPWD2 ? "text" : "password"}
+                 required='true'
+                 value={formValues.confirmarClave}
+                 onChange={handleChange}
+                 
+                />
+                {showPWD2 ? 
+                    // eslint-disable-next-line jsx-a11y/anchor-is-valid
+                    <a className="showPwDForm" onClick={() =>setShowPWD2(!showPWD2)}> <FaEyeSlash/></a> :
+                    // eslint-disable-next-line jsx-a11y/anchor-is-valid 
+                    <a className="showPwDForm" onClick={() =>setShowPWD2(!showPWD2)}> <FaEye/></a>
+                }
+                
             </Control>
         </Field>
         <Field>

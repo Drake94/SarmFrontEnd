@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../../assets/css/app.css'
 import { Modal, Container } from 'react-bulma-components';
 import adminLayout from '../../HOC/adminLayout';
 import AddButton from '../../component/button';
@@ -35,10 +36,19 @@ const MedicoLayout = () => {
             swal.fire({
                 icon: 'success',
                 title: 'Registrado',
-                text: 'Médico '+ data.nombre +' a sido registrado con exito',
+                text: 'Médico '+ data.nombre +' a sido registrado con éxito',
+                confirmButtonText: 'Aceptar',
+                timer: '3000'
+                });
+        }else if(response.status !== 201){
+            swal.fire({
+                icon: 'error',
+                title: 'No registrado',
+                text: 'Ha ocurrido un error '+ response.response.data,
                 confirmButtonText: 'Aceptar'
                 });
         }
+
         loadMedics()
         setIsModalOpen(false)
         
@@ -46,6 +56,17 @@ const MedicoLayout = () => {
     return (
         <>
         <Container>
+        <AddButton onClick={() =>setIsModalOpen(true)} />
+            <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                <Modal.Card>
+                    <Modal.Card.Header className='delete'>
+                        Registrar un médico
+                    </Modal.Card.Header>
+                    <Modal.Card.Body>
+                        <Form handleSubmit={handleSubmit} />
+                    </Modal.Card.Body>
+                </Modal.Card>
+            </Modal>
             <Header tittle="Médicos" />
             {
                  isLoading && <Loading/>
@@ -63,17 +84,7 @@ const MedicoLayout = () => {
                 !isLoading && medics.length && <ListMedics medics={ medics }/>
             }
 
-            <AddButton onClick={() =>setIsModalOpen(true)} />
-            <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
-                <Modal.Card>
-                    <Modal.Card.Header>
-                        Registrar un médico
-                    </Modal.Card.Header>
-                    <Modal.Card.Body>
-                        <Form handleSubmit={handleSubmit} />
-                    </Modal.Card.Body>
-                </Modal.Card>
-            </Modal>
+            
         </Container>
         </>
     )

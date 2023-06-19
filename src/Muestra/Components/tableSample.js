@@ -1,35 +1,57 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from "react";
 import {  Box, Table } from 'react-bulma-components';
 import '../../assets/css/profile.css'
-import { FaArrowDown, FaPen, FaTrash } from "react-icons/fa"
+import { FaCog, FaPen, FaTrash } from "react-icons/fa"
+import Pagination from '../../component/pagination';
+import { getMuestra } from "../services";
 
-const TableSamples = ({ samples }) =>{
+const TableSamples = () =>{
+    const [samples, setSamples] = useState([]);
+    const totalSamples = samples.length
+    const [samplesForPage, setSamplesForPage] = useState(5)
+    const [currentPage, setCurrentPage] = useState(1)
+    const lastIndex = currentPage * samplesForPage
+    const firstIndex = lastIndex - samplesForPage
 
+
+    async function loadSamples () {
+        const response = await getMuestra();
+
+        if (response.status === 200) {
+            setSamples(response.data.muestra)
+        }
+    }
+
+    useEffect( () => {
+        loadSamples()
+    },[])
 
     return(
-        <Box className="boxTable">
+        <div className="mb-3">
+        <Box >
             <Table class="table">
                 <thead>
                     <tr>
-                        <th><abbr title="Tipo de muestra">Tipo de muestra</abbr></th>
-                        <th><abbr title="Descripción">Descripción</abbr></th>
-                        <th><abbr title="Rut Paciente">Rut del paciente</abbr></th>
-                        <th><abbr title="Fecha muestra">Fecha muestra</abbr></th>
-                        <th><abbr title="Estado">Estado</abbr></th>
-                        <th></th>
+                        <th className="abbr"><abbr title="Tipo de muestra">Tipo de muestra</abbr></th>
+                        <th className="abbr"><abbr title="Descripción">Descripción</abbr></th>
+                        <th className="abbr"><abbr title="Rut Paciente">Rut del paciente</abbr></th>
+                        <th className="abbr"><abbr title="Fecha muestra">Fecha muestra</abbr></th>
+                        <th className="abbr"><abbr title="Estado">Estado</abbr></th>
+                        <th className="abbr"><abbr>Opciones</abbr></th>
                     </tr>
                 </thead>
                 <tbody className="tbody-1">
-                    {samples.map(({sampleType, description, rutPatient, createdAt, status}) => (
-                            <tr className="tr-1">
-                                <td>{sampleType}</td>
-                                <td>{description}</td>
-                                <td>{rutPatient}</td>
-                                <td>{createdAt}</td>
-                                <td>{status}</td>
-                                <td>
+                    {samples.map(({_id, sampleType, description, rutPatient, createdAt, status}) => (
+                            <tr className="tr-1" key={_id}>
+                                <td >{sampleType}</td>
+                                <td >{description}</td>
+                                <td >{rutPatient}</td>
+                                <td >{createdAt}</td>
+                                <td >{status}</td>
+                                <td className="centerTable">
                                     <div className="dropdown table-action-dropdown">
-                                        <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButtonSM" data-bs-toggle="dropdown" aria-expanded="false"><FaArrowDown /></button>
+                                        <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButtonSM" data-bs-toggle="dropdown" aria-expanded="false"><FaCog /></button>
                                         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButtonSM">
                                             <li>
                                                 <button className="btn btn-outline-black " aria-hidden="true" ><FaPen />&nbsp;Editar</button>
@@ -42,13 +64,17 @@ const TableSamples = ({ samples }) =>{
                                     </div>
                                 </td>
                             </tr>
-                        )
-                    )
-                    }    
+                    )).slice( firstIndex, lastIndex)}    
                 </tbody>
             
             </Table>
         </Box>
+        <Pagination samplesForPage={samplesForPage}
+             currentPage={currentPage} 
+             setCurrentPage={setCurrentPage}
+             totalSamples={totalSamples}
+             />
+        </div>
     )
 }
 export default TableSamples;

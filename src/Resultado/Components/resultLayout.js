@@ -8,6 +8,7 @@ import Form from './form';
 import { createResult } from '../services';
 import Loading from '../../component/loading';
 import { getResult } from "../services";
+import swal from 'sweetalert2';
 
 const ResultLayout = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -29,13 +30,40 @@ const ResultLayout = () => {
     },[])
 
     const handleSubmit = async (data) => {
-        await createResult(data)
+        const response =await createResult(data)
+        if (response.status === 201) {
+            swal.fire({
+                icon: 'success',
+                title: 'Registrado',
+                text: 'Resultado registrado con éxito',
+                confirmButtonText: 'Aceptar',
+                timer: '3000'
+                });
+        }else if(response.status !== 201){
+            swal.fire({
+                icon: 'error',
+                title: 'No registrado',
+                text: 'Ha ocurrido un error '+ response.response.data,
+                confirmButtonText: 'Aceptar'
+                });
+        }
         loadResult()
         setIsModalOpen(false)
     }
     return (
         <>
         <Container>
+        <AddButton onClick={() =>setIsModalOpen(true)} />
+            <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                <Modal.Card>
+                    <Modal.Card.Header>
+                        Registrar Resultados
+                    </Modal.Card.Header>
+                    <Modal.Card.Body>
+                        <Form handleSubmit={handleSubmit} />
+                    </Modal.Card.Body>
+                </Modal.Card>
+            </Modal>
             <Header tittle="Resultados" />
             {
                  isLoading && <Loading/>
@@ -53,17 +81,7 @@ const ResultLayout = () => {
                 !isLoading && results.length && <TableResult results={ results }/>
             }
 
-            <AddButton onClick={() =>setIsModalOpen(true)} />
-            <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
-                <Modal.Card>
-                    <Modal.Card.Header>
-                        Registrar Resultados
-                    </Modal.Card.Header>
-                    <Modal.Card.Body>
-                        <Form handleSubmit={handleSubmit} />
-                    </Modal.Card.Body>
-                </Modal.Card>
-            </Modal>
+            
         </Container>
         </>
     )

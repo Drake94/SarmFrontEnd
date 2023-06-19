@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {loginMedic} from '../Medico/services'
 import swal from 'sweetalert2'
 import { useNavigate } from "react-router-dom/dist";
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -14,12 +15,13 @@ const LoginPage = () => {
     const[user, setUser] = useState({
         correo:'',
         clave:'',
-    })
+    });
+    const [showPWD, setShowPWD] = useState(false);
 
     const handleChange = (event) =>{
         const { name, value} = event.target
         setUser({...user, [name]:value})
-    }
+    };
 
     const submitForm= async (e)=> {
         e.preventDefault();
@@ -28,7 +30,7 @@ const LoginPage = () => {
         if (!logInUser) {
             swal.fire({
                 icon: 'warning',
-                title: 'Error 400',
+                title: 'Error',
                 text: 'Usuario o clave incorrecto ',
                 confirmButtonText: 'Aceptar'
                 });
@@ -43,7 +45,7 @@ const LoginPage = () => {
             navigate('/');
         }
         
-    }
+    };
     
         return (
 
@@ -63,12 +65,18 @@ const LoginPage = () => {
                 {/* <!-- Password input --> */}
                 <div className="form-outline mb-3">
                     <label className="form-label">Contraseña</label>
-                    <input type="password" name="clave" className="form-control form-control-lg"
+                    <input type={showPWD ? "text" : "password"} name="clave" className="form-control form-control-lg"
                     placeholder="Contraseña" onChange={ handleChange} value= {user.clave} />
+                    {showPWD ? 
+                    // eslint-disable-next-line jsx-a11y/anchor-is-valid
+                    <a className="showPwDFormLogIn" onClick={() =>setShowPWD(!showPWD)}> <FaEyeSlash/></a> : 
+                    // eslint-disable-next-line jsx-a11y/anchor-is-valid
+                    <a className="showPwDFormLogIn" onClick={() =>setShowPWD(!showPWD)}> <FaEye/></a>
+                }
                 </div>
-
+                {/* 
                 <div className="d-flex justify-content-between align-items-center">
-                    {/* <!-- Checkbox --> */}
+                    <!-- Checkbox --> 
                     <div className="form-check mb-0">
                     <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
                     <label className="form-check-label" htmlFor="form2Example3">
@@ -77,9 +85,10 @@ const LoginPage = () => {
                     </div>
                     <Link to="/reset-password" className="text-body">Restablecer contraseña?</Link>
                 </div>
+                */}
                 <div className="text-center text-lg-start mt-4 pt-2">
                     
-                    <input LinkTo='/' type="submit" name="submit" className="btn btn-primary" value="Acceder"></input>
+                    <input type="submit" name="submit" className="btn btn-primary" value="Acceder"></input>
                     <p> </p><br />
                 </div>
             </form>

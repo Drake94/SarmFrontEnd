@@ -1,6 +1,5 @@
 import axios from 'axios';
 const baseUrl = process.env.REACT_APP_BASE_URL
-const token = document.cookie.replace('token=', '')
 
 export async function getMuestra () {
     try {
@@ -22,7 +21,7 @@ export async function createMuestra (pacientData) {
         data.append('description', pacientData.description)
         data.append('rutPatient', pacientData.rutPatient)
         data.append('status', pacientData.status)
-
+        const token = document.cookie.replace('token=', '')
         const response = await axios({
             url: `${baseUrl}/muestra`,
             method: 'POST',
@@ -35,5 +34,6 @@ export async function createMuestra (pacientData) {
         return response
     } catch(e) {
         console.log(e)
+        return e
     }
 }
