@@ -12,6 +12,7 @@ const TableResult = ({ results }) =>{
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [result, setResults] = useState([]);
     const totalSamples = result.length
+    // eslint-disable-next-line no-unused-vars
     const [samplesForPage, setSamplesForPage] = useState(5)
     const [currentPage, setCurrentPage] = useState(1)
     const lastIndex = currentPage * samplesForPage

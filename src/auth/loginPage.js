@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import '../assets/css/login.css'
+// eslint-disable-next-line no-unused-vars
 import { Link } from 'react-router-dom';
 import authLayout from '../HOC/authLayout';
 import 'bootstrap/dist/css/bootstrap.css';

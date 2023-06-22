@@ -9,6 +9,7 @@ const Form = ({ handleSubmit }) => {
     const [sampleType, setSampleType] = useState([]);
     const [pacients, setPacient] = useState([]);
     const [status, setStatus] = useState([]);
+    // eslint-disable-next-line no-unused-vars
     const [sample, setSample] = useState([]);
 
     async function loadSamples () {

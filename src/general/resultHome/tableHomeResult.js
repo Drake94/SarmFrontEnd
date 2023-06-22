@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import {  Box, Table } from 'react-bulma-components';
 import '../../assets/css/profile.css'

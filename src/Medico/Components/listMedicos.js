@@ -7,6 +7,7 @@ import Pagination from '../../component/pagination';
 const ListMedics = () =>{
     const [medics, setMedics] = useState([]);
     const totalSamples = medics.length
+    // eslint-disable-next-line no-unused-vars
     const [samplesForPage, setSamplesForPage] = useState(4)
     const [currentPage, setCurrentPage] = useState(1)
     const lastIndex = currentPage * samplesForPage
